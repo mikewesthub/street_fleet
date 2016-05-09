@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @truck.name %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @truck.twitter %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @truck.email %>
+</p>
+
+<p>
+  <strong>Phone 1:</strong>
+  <%= @truck.phone_1 %>
+</p>
+
+<p>
+  <strong>Phone 2:</strong>
+  <%= @truck.phone_2 %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @truck.website %>
+</p>
+
+<%= link_to 'Edit', edit_truck_path(@truck) %> |
+<%= link_to 'Back', trucks_path %>
