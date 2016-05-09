@@ -11,19 +11,20 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'kaminari'
+gem 'pg'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry-rails'
   gem 'quiet_assets'
 end
 
 group :test, :development do
+  gem 'rspec-rails'
   gem 'ffaker'
-  gem 'sqlite3'
+  gem 'pry-rails'
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
