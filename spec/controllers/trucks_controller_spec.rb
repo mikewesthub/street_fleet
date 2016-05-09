@@ -24,11 +24,11 @@ RSpec.describe TrucksController, type: :controller do
   # Truck. As you add validations to Truck, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: "Big Bobs Bigole truck" }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: "" }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +103,14 @@ RSpec.describe TrucksController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { name: "Tacos", website: "www.tacos.com"}
       }
 
       it "updates the requested truck" do
         truck = Truck.create! valid_attributes
         put :update, {:id => truck.to_param, :truck => new_attributes}, valid_session
         truck.reload
-        skip("Add assertions for updated state")
+        expect(truck.name).to eq("Tacos")
       end
 
       it "assigns the requested truck as @truck" do

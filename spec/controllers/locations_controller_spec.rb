@@ -24,11 +24,11 @@ RSpec.describe LocationsController, type: :controller do
   # Location. As you add validations to Location, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { truck_id: 3, longitude: 2.5, latitude: 2.6}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { truck_id: "", longitude: "", latitude: ""}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +103,14 @@ RSpec.describe LocationsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { longitude: 44.5, latitude: 33.3}
       }
 
       it "updates the requested location" do
         location = Location.create! valid_attributes
         put :update, {:id => location.to_param, :location => new_attributes}, valid_session
         location.reload
-        skip("Add assertions for updated state")
+        expect(location.latitude).to eq(33.3)
       end
 
       it "assigns the requested location as @location" do

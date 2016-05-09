@@ -15,7 +15,6 @@
   <tbody>
     <% @locations.each do |location| %>
       <tr>
-        <td><%= location.belongs_to %></td>
         <td><%= location.longitude %></td>
         <td><%= location.latitude %></td>
         <td><%= link_to 'Show', location %></td>
