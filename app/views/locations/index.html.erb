@@ -1,11 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Locations</h1>
+<div class="map-container" id='map' style='width: 800px; height: 500px;'>
+  <script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoid2VzdG1kMjMiLCJhIjoiY2lvMHNhZ3gyMTl6aXRxa2pnbDM0ajBzOCJ9.f-skllhdyAEgwGO_UZhk8Q';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v8'
+    });
+  </script>
+</div>
 
 <table>
   <thead>
     <tr>
-      <th>Belongs to</th>
       <th>Longitude</th>
       <th>Latitude</th>
       <th colspan="3"></th>
