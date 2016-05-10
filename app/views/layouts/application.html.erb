@@ -27,7 +27,7 @@
 
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+    <%= favicon_link_tag 'favicon-cutlery.ico' %>
 
     <%= javascript_include_tag "application" %>
 
@@ -36,7 +36,7 @@
   </head>
   <body>
 
-    <div class="navbar navbar-default navbar-static-top">
+    <div id="navbar" class="navbar navbar-default navbar-static-top">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           <span class="icon-bar"></span>
@@ -58,14 +58,13 @@
       <div class="row">
         <div class="col-lg-9">
           <%= bootstrap_flash %>
-          <%= yield %>
         </div>
-
+          <%= yield %>
       </div>
       <!--/row-->
 
-      <footer>
-        <p>&copy; StreetFleetDC 2016</p>
+      <footer class="footer navbar-fixed-bottom">
+        <p id="footer">&copy; StreetFleetDC 2016</p>
       </footer>
 
     </div>
