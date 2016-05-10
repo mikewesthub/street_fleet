@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  get 'home/show'
-
-  resources :locations
-  resources :trucks
   devise_for :users
+  get 'home/show'
+  resources :trucks do
+    resources :locations, shallow: true
+  end
+
+  resources :locations 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
