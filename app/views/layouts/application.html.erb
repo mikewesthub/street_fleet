@@ -28,15 +28,13 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon-cutlery.ico' %>
-
     <%= javascript_include_tag "application" %>
-
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]> <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script> <![endif]-->
+    <%= javascript_include_tag 'https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js', 'data-turbolinks-track' => true, :type => "application/javascript" %>
 
-  <script src='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.css' rel='stylesheet' />
-            
+
   </head>
   <body>
 
