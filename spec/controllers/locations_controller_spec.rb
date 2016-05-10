@@ -20,6 +20,11 @@ require 'rails_helper'
 
 RSpec.describe LocationsController, type: :controller do
 
+  before do
+    @user = User.create!({email: "me@gmail.com", password: "123456", password_confirmation: "123456"})
+    sign_in @user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Location. As you add validations to Location, be sure to
   # adjust the attributes here as well.
@@ -103,7 +108,7 @@ RSpec.describe LocationsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        { longitude: 44.5, latitude: 33.3}
+        { truck_id: 3, longitude: 44.5, latitude: 33.3}
       }
 
       it "updates the requested location" do
