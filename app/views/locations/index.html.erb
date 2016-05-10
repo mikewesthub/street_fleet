@@ -2,6 +2,25 @@
 
 <div class="map-container" id='map' style='width: 800px; height: 500px;'>
   <script type="text/javascript">
+    var latlong_array = [
+      <% @locations.each do |location|%>
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+              <%= location.longitude %>,
+              <%= location.latitude %>
+          ]
+        },
+        "properties": {
+          "title": "Mapbox DC",
+          "marker-symbol": "monument"
+        }
+      },
+      <% end %>
+    ];
+
   </script>
 </div>
 
