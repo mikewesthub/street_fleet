@@ -30,5 +30,8 @@
   <%= @truck.website %>
 </p>
 
-<%= link_to 'Edit', edit_truck_path(@truck) %> |
-<%= link_to 'Back', trucks_path %>
+<%  if current_user %>
+  <%= link_to 'New Location', new_truck_location_path(truck_id: @truck.id) %>
+  <%= link_to 'Edit', edit_truck_path(@truck) %> |
+  <%= link_to 'Back', trucks_path %>
+<% end %>
