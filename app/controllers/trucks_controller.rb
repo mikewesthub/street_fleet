@@ -5,6 +5,7 @@ class TrucksController < ApplicationController
   # GET /trucks
   # GET /trucks.json
   def index
+    @locations = Location.all
     @trucks = Truck.all
 
     respond_to do |format|

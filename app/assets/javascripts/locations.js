@@ -1,4 +1,4 @@
-console.log('HI');
+
 $(document).ready(function() {
 
   if ($(".map-container").length > 0) {
@@ -10,7 +10,7 @@ $(document).ready(function() {
       center: [-77.03716278076172,
         38.90198809660059
       ],
-      zoom: 11
+      zoom: 13
     });
 
     map.on('load', function() {

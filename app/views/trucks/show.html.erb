@@ -1,14 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @truck.name %>
-</p>
+<h3>Current Location</h3>
 
-<p>
-  <strong>Twitter:</strong>
+<div class="map-container" id='map' style='width: 300px; height: 300px;'>
+  <script type="text/javascript">
+    var latlong_array = [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+              <%= "location.longitude" %>,
+              <%= "location.latitude" %>
+          ]
+        },
+        "properties": {
+          "title": "",
+          "marker-symbol": "monument"
+        }
+      },
+    ];
+
+  </script>
+</div>
+
+
+<h3>
+  <strong><%= @truck.name %></strong>
+</h3>
+
+<h5>
   <%= @truck.twitter %>
-</p>
+</h5>
 
 <p>
   <strong>Email:</strong>
@@ -16,19 +39,17 @@
 </p>
 
 <p>
-  <strong>Phone 1:</strong>
   <%= @truck.phone_1 %>
 </p>
 
 <p>
-  <strong>Phone 2:</strong>
   <%= @truck.phone_2 %>
 </p>
 
 <p>
-  <strong>Website:</strong>
   <%= @truck.website %>
 </p>
+
 
 <%  if current_user %>
   <%= link_to 'New Location', new_truck_location_path(truck_id: @truck.id) %>
