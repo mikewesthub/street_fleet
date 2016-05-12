@@ -2,7 +2,7 @@
 
 <h3>Current Location</h3>
 
-<div class="map-container" id='map' style='width: 300px; height: 300px;'>
+<div class="map-container" id='map' style='width: 400px; height: 300px;'>
   <script type="text/javascript">
     var latlong_array = [
       {
@@ -10,12 +10,12 @@
         "geometry": {
           "type": "Point",
           "coordinates": [
-              <%= "location.longitude" %>,
-              <%= "location.latitude" %>
+            <%= @truck.locations.last.longitude %>,
+            <%= @truck.locations.last.latitude %>
           ]
         },
         "properties": {
-          "title": "",
+          "title": "<%= @truck.name %>",
           "marker-symbol": "monument"
         }
       },
@@ -34,7 +34,6 @@
 </h5>
 
 <p>
-  <strong>Email:</strong>
   <%= @truck.email %>
 </p>
 
@@ -47,12 +46,13 @@
 </p>
 
 <p>
-  <%= @truck.website %>
+  <%= link_to "#{@truck.name}'s website", @truck.website %>
 </p>
 
 
 <%  if current_user %>
-  <%= link_to 'New Location', new_truck_location_path(truck_id: @truck.id) %>
-  <%= link_to 'Edit', edit_truck_path(@truck) %> |
-  <%= link_to 'Back', trucks_path %>
+  <%= link_to 'New Location', new_truck_location_path(truck_id: @truck.id), class:"btn btn-success" %>
+  <%= link_to 'Edit', edit_truck_path(@truck), class:"btn btn-primary" %>
+  <%= link_to 'Back', trucks_path, class:"btn btn-default" %>
+  <%= link_to 'Destroy', truck_path(@truck), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
 <% end %>
