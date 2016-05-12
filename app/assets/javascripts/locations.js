@@ -10,7 +10,7 @@ $(document).ready(function() {
       center: [-77.03716278076172,
         38.90198809660059
       ],
-      zoom: 13
+      zoom: 12
     });
 
     map.on('load', function() {

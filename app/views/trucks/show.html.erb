@@ -1,58 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Current Location</h3>
+<div class="row">
+<div class="col-md-7">
+<h1>
+  <strong><%= @truck.name %></strong>
+</h1>
 
-<div class="map-container" id='map' style='width: 400px; height: 300px;'>
-  <script type="text/javascript">
-    var latlong_array = [
-      {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            <%= @truck.locations.last.longitude %>,
-            <%= @truck.locations.last.latitude %>
-          ]
-        },
-        "properties": {
-          "title": "<%= @truck.name %>",
-          "marker-symbol": "monument"
-        }
-      },
-    ];
-
-  </script>
+    <div class="map-container" id='map' style='width: 600px; height: 400px;'>
+      <script type="text/javascript">
+        var latlong_array = [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                <%= @truck.locations.last.longitude %>,
+                <%= @truck.locations.last.latitude %>
+              ]
+            },
+            "properties": {
+              "title": "<%= @truck.name %>",
+              "marker-symbol": "monument"
+            }
+          },
+        ];
+      </script>
+    </div>
+    <h3>Current Location</h3>
+    <% if current_user %>
+      <%= link_to 'New Location', new_truck_location_path(truck_id: @truck.id), class:"btn btn-success" %>
+    <% end %>
 </div>
 
-
-<h3>
-  <strong><%= @truck.name %></strong>
-</h3>
-
-<h5>
-  <%= @truck.twitter %>
-</h5>
-
-<p>
-  <%= @truck.email %>
-</p>
-
-<p>
-  <%= @truck.phone_1 %>
-</p>
-
-<p>
-  <%= @truck.phone_2 %>
-</p>
-
-<p>
-  <%= link_to "#{@truck.name}'s website", @truck.website %>
-</p>
-
-
-<%  if current_user %>
-  <%= link_to 'New Location', new_truck_location_path(truck_id: @truck.id), class:"btn btn-success" %>
-  <%= link_to 'Edit', edit_truck_path(@truck), class:"btn btn-primary" %>
-  <%= link_to 'Back', trucks_path, class:"btn btn-default" %>
-  <%= link_to 'Destroy', truck_path(@truck), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
-<% end %>
+<div class="col-md-5">
+  <div id="sidebar" class="well sidebar-nav">
+    <ul class="nav nav-list">
+      <li class="nav-header">
+        <strong>Contact</strong>
+      </li>
+      <li>
+        <p><strong>Twitter:</strong><%= @truck.twitter %></p>
+      </li>
+      <li>
+        <p><strong>Email:</strong><%= @truck.email %></p>
+      </li>
+      <li>
+        <p><strong>Phone:</strong><%= @truck.phone_1 %></p>
+      </li>
+      <li>
+        <p><strong>Web:</strong><%= link_to "#{@truck.name}'s website", @truck.website %></p>
+      </li>
+    </ul>
+    <div class="btn group">
+    <%  if current_user %>
+      <%= link_to 'Edit', edit_truck_path(@truck), class:"btn btn-primary" %>
+      <%= link_to 'Destroy', truck_path(@truck), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+      <%= link_to 'Back', trucks_path, class:"btn btn-default" %>
+    <% end %>
+  </div>
+  </div>
+</div>
+</div>

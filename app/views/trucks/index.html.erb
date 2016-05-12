@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h3>On the role</h3>
+<%= link_to 'Add a Truck', new_truck_path, class: "btn btn-success" %>
 
 <table class="table table-striped table-hover ">
   <thead>
@@ -22,32 +23,6 @@
             <%= truck.locations.last.latitude %>
         </td>
         <td><%= time_ago_in_words(truck.created_at) + " ago"%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Truck', new_truck_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Longitude</th>
-      <th>Latitude</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @locations.each do |location| %>
-      <tr>
-        <td><%= location.longitude %></td>
-        <td><%= location.latitude %></td>
-        <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

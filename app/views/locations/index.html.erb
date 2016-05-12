@@ -27,6 +27,6 @@
 
 <% @locations.each do |location| %>
 
-    <%link_to "#{location.truck.name}", truck_path(id: location.truck_id)  %>
+    <%= link_to "#{location.truck.name}", truck_path(id: location.truck_id) %><%= ".." %>
 
 <% end %>
