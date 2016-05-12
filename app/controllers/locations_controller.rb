@@ -5,7 +5,8 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+    most_recent = Location.select("max(id) as id").group(:truck_id)
+    @locations = Location.where(id: most_recent).includes(:truck)
 
     respond_to do |format|
       format.html # index.html.erb
