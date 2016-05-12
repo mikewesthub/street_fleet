@@ -15,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% @trucks.each do |truck| %>
+    <% @trucks.order(id: :desc).each do |truck| %>
       <tr>
         <td><%= link_to "#{truck.name}", truck %></td>
         <td><%= truck.twitter %></td>
