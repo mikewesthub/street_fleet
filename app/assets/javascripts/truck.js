@@ -4,25 +4,23 @@ $(document).ready(function() {
   if ($(".map-container").length > 0) {
 
     mapboxgl.accessToken = 'pk.eyJ1Ijoid2VzdG1kMjMiLCJhIjoiY2lvMHNhZ3gyMTl6aXRxa2pnbDM0ajBzOCJ9.f-skllhdyAEgwGO_UZhk8Q';
-    var map = new mapboxgl.Map({
+    var mapTruck = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v8',
-      center: [-77.03716278076172,
-        38.90198809660059
-      ],
-      zoom: 12
+      center: centerCoordinates,
+      zoom: 15
     });
 
-    map.on('load', function() {
-        map.addSource("markers", {
+    mapTruck.on('load', function() {
+        mapTruck.addSource("markers", {
             "type": "geojson",
             "data": {
               "type": "FeatureCollection",
-              "features": latlongArray
+              "features": latlongTruckArray
           }
         });
 
-      map.addLayer({
+      mapTruck.addLayer({
         "id": "markers",
         "type": "symbol",
         "source": "markers",
