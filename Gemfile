@@ -12,6 +12,8 @@ gem 'turbolinks'
 gem 'active_model_serializers'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'twitter-bootstrap-rails'
 gem 'kaminari'
 gem 'geocoder'
