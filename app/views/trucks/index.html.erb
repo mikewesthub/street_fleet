@@ -21,8 +21,7 @@
         <td><%= truck.twitter %></td>
         <td>
             <% if truck.locations.last %>
-              <%= truck.locations.last.longitude %>
-              <%= truck.locations.last.latitude %>
+              <%= truck.locations.last.address %>
             <% end %>
         </td>
         <td><%= time_ago_in_words(truck.created_at) + " ago"%></td>

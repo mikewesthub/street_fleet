@@ -1,6 +1,3 @@
-
-
-
 <% if current_user %>
   <h1>Welcome back to the fleet!</h1>
   <div id="nav-btn" class="btn-group btn-group-justified" role="group">
@@ -8,7 +5,7 @@
       <%= link_to "Dashboard", locations_path, class: "btn btn-lg btn-success" %>
     </div>
     <div class="btn-group" role="group">
-      <%= link_to "See the Fleet", locations_path, class: "btn btn-lg btn-primary" %>
+      <%= link_to "See the Fleet", trucks_path, class: "btn btn-lg btn-primary" %>
     </div>
   </div>
 <% else %>
@@ -20,6 +17,8 @@
       <%= link_to "Join the Fleet", new_user_registration_path, class: "btn btn-lg btn-primary" %>
     </div>
   </div>
+  <div id="filter" class="container">
     <iframe id="bgvid" width="560" height="315" src="https://www.youtube.com/embed/kxo980tMIts?autoplay=1&loop=1&playlist=kxo980tMIts" frameborder="0" allowfullscreen>
     </iframe>
+  </div>
 <% end %>
