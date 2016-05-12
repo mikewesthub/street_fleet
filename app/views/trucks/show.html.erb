@@ -9,21 +9,24 @@
     <div class="map-container" id='map' style='width: 600px; height: 400px;'>
       <script type="text/javascript">
         var latlong_array = [
+          <% @truck.most_recent_location.each do |location|%>
           {
             "type": "Feature",
             "geometry": {
               "type": "Point",
               "coordinates": [
-                <%= @truck.locations.last.longitude %>,
-                <%= @truck.locations.last.latitude %>
+                  <%= location.longitude %>,
+                  <%= location.latitude %>
               ]
             },
             "properties": {
-              "title": "<%= @truck.name %>",
+              "title": " <%= location.truck.name %> ",
               "marker-symbol": "monument"
             }
           },
+          <% end %>
         ];
+
       </script>
     </div>
     <h3>Current Location</h3>

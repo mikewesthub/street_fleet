@@ -19,8 +19,11 @@
       <tr>
         <td><%= link_to "#{truck.name}", truck %></td>
         <td><%= truck.twitter %></td>
-        <td><%= truck.locations.last.longitude %>
-            <%= truck.locations.last.latitude %>
+        <td>
+            <% if truck.locations.last %>
+              <%= truck.locations.last.longitude %>
+              <%= truck.locations.last.latitude %>
+            <% end %>
         </td>
         <td><%= time_ago_in_words(truck.created_at) + " ago"%></td>
       </tr>

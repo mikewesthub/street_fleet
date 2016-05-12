@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'kaminari'
+gem 'geocoder'
 gem 'pg'
 
 group :development do

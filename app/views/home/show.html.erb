@@ -1,12 +1,25 @@
 
-<div id="nav-btn" class="btn-group btn-group-justified" role="group">
-  <div class="btn-group" role="group">
-    <%= link_to "Eat", locations_path, class: "btn btn-lg btn-success" %>
-  </div>
-  <div class="btn-group" role="group">
-    <%= link_to "Join the Fleet", new_user_registration_path, class: "btn btn-lg btn-primary" %>
-  </div>
-</div>
 
-<iframe id="bgvid" width="560" height="315" src="https://www.youtube.com/embed/kxo980tMIts?autoplay=1&loop=1&playlist=kxo980tMIts" frameborder="0" allowfullscreen>
-</iframe>
+
+<% if current_user %>
+  <h1>Welcome back to the fleet!</h1>
+  <div id="nav-btn" class="btn-group btn-group-justified" role="group">
+    <div class="btn-group" role="group">
+      <%= link_to "Dashboard", locations_path, class: "btn btn-lg btn-success" %>
+    </div>
+    <div class="btn-group" role="group">
+      <%= link_to "See the Fleet", locations_path, class: "btn btn-lg btn-primary" %>
+    </div>
+  </div>
+<% else %>
+  <div id="nav-btn" class="btn-group btn-group-justified" role="group">
+    <div class="btn-group" role="group">
+      <%= link_to "Eat", locations_path, class: "btn btn-lg btn-success" %>
+    </div>
+    <div class="btn-group" role="group">
+      <%= link_to "Join the Fleet", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+    </div>
+  </div>
+    <iframe id="bgvid" width="560" height="315" src="https://www.youtube.com/embed/kxo980tMIts?autoplay=1&loop=1&playlist=kxo980tMIts" frameborder="0" allowfullscreen>
+    </iframe>
+<% end %>
