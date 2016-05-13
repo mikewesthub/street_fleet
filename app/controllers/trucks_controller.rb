@@ -1,6 +1,7 @@
 class TrucksController < ApplicationController
   before_action :set_truck, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :authorize_user_by_truck, only: [:edit, :update, :destroy]
 
   # GET /trucks
   # GET /trucks.json
@@ -25,7 +26,7 @@ class TrucksController < ApplicationController
 
   # GET /trucks/new
   def new
-    @truck = Truck.new
+    @truck = Truck.new(user_id: current_user.id)
   end
 
   # GET /trucks/1/edit
@@ -80,6 +81,10 @@ class TrucksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def truck_params
-      params.require(:truck).permit(:name, :twitter, :email, :phone_1, :phone_2, :website)
+      params.require(:truck).permit(:name, :twitter, :email, :phone_1, :phone_2, :website, :user_id)
+    end
+
+    def authorize_user_by_truck
+      redirect_to(truck_path(@truck), notice: "You have to be logged in to do that" ) unless @truck.user == current_user
     end
 end

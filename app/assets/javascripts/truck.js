@@ -1,11 +1,11 @@
 
 $(document).ready(function() {
 
-  if ($(".map-container").length > 0) {
+  if ($(".map-container-truck").length > 0) {
 
     mapboxgl.accessToken = 'pk.eyJ1Ijoid2VzdG1kMjMiLCJhIjoiY2lvMHNhZ3gyMTl6aXRxa2pnbDM0ajBzOCJ9.f-skllhdyAEgwGO_UZhk8Q';
     var mapTruck = new mapboxgl.Map({
-      container: 'map',
+      container: 'mapTruck',
       style: 'mapbox://styles/mapbox/streets-v8',
       center: centerCoordinates,
       zoom: 15

@@ -3,8 +3,8 @@
 <h1>
   <strong><%= @truck.name %></strong>
 </h1>
-
-    <div class="map-container" id='map' style='width: 600px; height: 400px;'>
+    <% if @truck.most_recent_location.first %>
+    <div class="map-container-truck" id='mapTruck' style='width: 600px; height: 400px;'>
       <script type="text/javascript">
         var latlongTruckArray = [
           <% @truck.most_recent_location.each do |location|%>
@@ -34,6 +34,9 @@
     </div>
     <h4>Current Location</h4>
     <%= @truck.most_recent_location.first.address %>
+  <% else %>
+    <h4>Add a new location to display a map below.</h4>
+  <% end %>
     <br>
       <% if current_user %>
         <%= link_to 'New Location', new_truck_location_path(truck_id: @truck.id), class:"btn btn-success" %>

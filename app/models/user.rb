@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :trucks
+  has_many :locations, through: :trucks
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
