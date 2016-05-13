@@ -1,6 +1,6 @@
 class TrucksController < ApplicationController
   before_action :set_truck, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :authorize_user_by_truck, only: [:edit, :update, :destroy]
 
   # GET /trucks
@@ -85,6 +85,6 @@ class TrucksController < ApplicationController
     end
 
     def authorize_user_by_truck
-      redirect_to(truck_path(@truck), notice: "You have to be logged in to do that" ) unless @truck.user == current_user
+      redirect_to(truck_path(@truck), notice: "You have to be logged in to do that") unless @truck.user == current_user
     end
 end

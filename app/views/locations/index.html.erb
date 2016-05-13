@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<div class="map-container" id='mapIndex' style='width: 100%; height: 600px;' allowfullscreen>
+<div class="map-container" id='mapIndex'>
   <script type="text/javascript">
     var latlongArray = [
       <% @locations.each do |location|%>
@@ -15,7 +13,7 @@
         },
         "properties": {
           "title": " <%= location.truck.name %> ",
-          "marker-symbol": "monument"
+          "marker-symbol": "car"
         }
       },
       <% end %>
@@ -23,10 +21,3 @@
 
   </script>
 </div>
-
-
-<% @locations.each do |location| %>
-
-    <%= link_to "#{location.truck.name}", truck_path(id: location.truck_id) %><%= ".." %>
-
-<% end %>

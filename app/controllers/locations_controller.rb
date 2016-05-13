@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
-  before_action :authorize_user_by_location, only: [:create]
+  # before_action :authorize_user_by_location, only: [:create]
   # GET /locations
   # GET /locations.json
   def index
@@ -81,7 +81,7 @@ class LocationsController < ApplicationController
       params.require(:location).permit(:truck_id, :longitude, :latitude)
     end
 
-    def authorize_user_by_location
-      redirect_to(truck_path(@truck), notice: "You have to be logged in to do that" ) unless @truck.user_id == current_user.id
-    end
+    # def authorize_user_by_location
+    #   redirect_to(truck_path(@truck), notice: "You have to be logged in to do that" ) unless @truck.user_id == current_user.id
+    # end
 end

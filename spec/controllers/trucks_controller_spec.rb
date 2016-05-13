@@ -29,7 +29,7 @@ RSpec.describe TrucksController, type: :controller do
   # Truck. As you add validations to Truck, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { name: "Big Bobs Bigole truck" }
+    { name: "Big Bobs Bigole truck", user_id: @user.id }
   }
 
   let(:invalid_attributes) {
