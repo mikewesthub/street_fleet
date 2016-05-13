@@ -1,7 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
-  # before_action :authorize_user_by_location, only: [:create]
   # GET /locations
   # GET /locations.json
   def index
@@ -26,7 +25,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   def new
     @location = Location.new(truck_id: params["truck_id"])
-    @truck = Truck.where(id: @location.truck_id)
+    authorize_user_by_location
   end
 
   # GET /locations/1/edit
@@ -37,6 +36,7 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
+    authorize_user_by_location
     respond_to do |format|
       if @location.save
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
@@ -81,7 +81,7 @@ class LocationsController < ApplicationController
       params.require(:location).permit(:truck_id, :longitude, :latitude)
     end
 
-    # def authorize_user_by_location
-    #   redirect_to(truck_path(@truck), notice: "You have to be logged in to do that" ) unless @truck.user_id == current_user.id
-    # end
+    def authorize_user_by_location
+      redirect_to(truck_path(@location.truck), notice: "You have to be logged in to do that" ) unless @location.truck.user_id == current_user.id
+    end
 end
