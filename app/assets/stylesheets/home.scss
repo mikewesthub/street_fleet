@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div#heading {
+  text-color: white;
+}
+
 iframe#bgvid {
     position: fixed;
     top: 50%;
@@ -15,10 +19,27 @@ iframe#bgvid {
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    filter: grayscale(50%);
+    -webkit-filter: blur(7px);
 }
 
 div#nav-btn {
   text-align: center;
-  margin-top: 20%;
+  margin-top: 18%;
+}
+
+#lineup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -webkit-filter: blur(7px);
+  transform: translateX(-50%) translateY(-50%);
+  filter: grayscale(100%);
 }

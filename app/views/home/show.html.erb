@@ -1,7 +1,4 @@
 <% if current_user %>
-  <div>
-    <h1>Welcome back to the fleet!</h1>
-  </div>  
   <div id="nav-btn" class="btn-group btn-group-justified" role="group">
     <div class="btn-group" role="group">
       <%= link_to "Dashboard", locations_path, class: "btn btn-lg btn-success" %>
@@ -10,6 +7,8 @@
       <%= link_to "See the Fleet", trucks_path, class: "btn btn-lg btn-primary" %>
     </div>
   </div>
+  <img id="lineup" src="https://cdn2.vox-cdn.com/thumbor/ZIztxRIJxM7uRP3tTRnuB1jMKnA=/0x0:1024x768/1310x983/filters:format(webp)/cdn0.vox-cdn.com/uploads/chorus_image/image/47143878/food-truck-lineup.0.0.jpg">
+  <img>
 <% else %>
   <div id="nav-btn" class="btn-group btn-group-justified" role="group">
     <div class="btn-group" role="group">
