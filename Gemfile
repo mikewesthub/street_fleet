@@ -16,6 +16,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'twitter-bootstrap-rails'
 gem 'kaminari'
+gem 'twitter'
 gem 'geocoder'
 gem 'pg'
 
