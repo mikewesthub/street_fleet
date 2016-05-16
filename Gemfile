@@ -18,6 +18,7 @@ gem 'twitter-bootstrap-rails'
 gem 'kaminari'
 gem 'twitter'
 gem 'geocoder'
+gem 'redis-rails'
 gem 'pg'
 
 group :development do

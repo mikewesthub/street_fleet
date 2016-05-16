@@ -36,7 +36,7 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
-    authorize_user_by_location
+    return if authorize_user_by_location
     respond_to do |format|
       if @location.save
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
@@ -82,6 +82,6 @@ class LocationsController < ApplicationController
     end
 
     def authorize_user_by_location
-      redirect_to(truck_path(@location.truck), notice: "You have to be logged in to do that" ) unless @location.truck.user_id == current_user.id
+      redirect_to(root_path, notice: "You have to be logged in to do that" ) if !@location.truck || @location.truck.user_id != current_user.id
     end
 end

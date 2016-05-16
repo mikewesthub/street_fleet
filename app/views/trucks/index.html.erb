@@ -31,3 +31,9 @@
 </table>
 
 <br>
+
+<% @tweets.home_tweets.each do |tweet| %>
+  <ul>
+    <li><%= tweet.text %></li>
+  </ul>
+<% end %>

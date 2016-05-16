@@ -8,7 +8,7 @@ class TrucksController < ApplicationController
   def index
     @locations = Location.all
     @trucks = Truck.all
-
+    @tweets = StreetTwitter.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @trucks }
@@ -18,6 +18,7 @@ class TrucksController < ApplicationController
   # GET /trucks/1
   # GET /trucks/1.json
   def show
+    @tweets = StreetTwitter.new
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @truck }

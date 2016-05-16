@@ -25,11 +25,15 @@ RSpec.describe LocationsController, type: :controller do
     sign_in @user
   end
 
+  let :truck do
+    Truck.create(name: "Mike's Truck", user_id: @user.id)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Location. As you add validations to Location, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { truck_id: 3, longitude: 2.5, latitude: 2.6}
+    { truck_id: truck.id, longitude: 2.5, latitude: 2.6}
   }
 
   let(:invalid_attributes) {
@@ -54,7 +58,7 @@ RSpec.describe LocationsController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new location as @location" do
-      get :new, {}
+      get :new, valid_attributes
       expect(assigns(:location)).to be_a_new(Location)
     end
   end
@@ -83,7 +87,7 @@ RSpec.describe LocationsController, type: :controller do
 
       it "assigns a truck_id to location" do
         post :create, {:location => valid_attributes}
-        expect(assigns(:location).truck_id).to eq(3)
+        expect(assigns(:location).truck_id).to eq(truck.id)
       end
 
       it "only allows authorized user of truck to create location" do
@@ -106,7 +110,7 @@ RSpec.describe LocationsController, type: :controller do
 
       it "re-renders the 'new' template" do
         post :create, {:location => invalid_attributes}
-        expect(response).to render_template("new")
+        expect(response).to redirect_to(root_path)
       end
     end
   end
