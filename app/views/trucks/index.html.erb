@@ -7,7 +7,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Twitter</th>
       <th>Location</th>
       <th>Last Active</th>
       <th colspan="3"></th>
@@ -18,7 +17,6 @@
     <% @trucks.order(id: :desc).each do |truck| %>
       <tr>
         <td><%= link_to "#{truck.name}", truck %></td>
-        <td><%= "@#{truck.twitter}" %></td>
         <td>
             <% if truck.locations.last %>
               <%= truck.locations.last.address %>
@@ -32,8 +30,17 @@
 
 <br>
 
-<% @tweets.home_tweets.each do |tweet| %>
-  <ul>
-    <li><%= tweet.text %></li>
-  </ul>
-<% end %>
+<table class="table table-striped table-hover ">
+  <thead>
+    <h3>The Fleet is Buzzing</h3>
+  </thead>
+  <tbody>
+    <% @tweets.home_tweets.each do |tweet| %>
+      <tr>
+        <td><%= image_tag(tweet.user.profile_image_url) %></td>
+        <td>@<%= tweet.user.screen_name %></td>
+        <td><%= tweet.text %></td>
+      </ul>
+    <% end %>
+  </tbody>
+</table>
