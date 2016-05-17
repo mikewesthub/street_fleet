@@ -1,3 +1,19 @@
 // Place all the styles related to the locations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+footer {
+    width: 100%;
+    min-height: 80px;
+    background-color: #222222;
+}
+
+.push {
+  min-height: 100px;
+}
+
+ p#logo {
+   margin: auto 0px;
+   padding-bottom: 0px;
+   color: white;
+ }
