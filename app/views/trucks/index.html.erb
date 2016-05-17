@@ -18,7 +18,7 @@
     <% @trucks.order(id: :desc).each do |truck| %>
       <tr>
         <td><%= link_to "#{truck.name}", truck %></td>
-        <td><%= truck.twitter %></td>
+        <td><%= "@#{truck.twitter}" %></td>
         <td>
             <% if truck.locations.last %>
               <%= truck.locations.last.address %>
