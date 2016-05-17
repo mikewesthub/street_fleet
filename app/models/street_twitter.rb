@@ -19,6 +19,8 @@ class StreetTwitter
   end
 
   def truck_tweets(handle)
-    client.user_timeline("#{handle}")[0..4]
+    Rails.cache.fetch("twitter_truck_index", expires_in: 30.minutes.from_now) do
+      client.user_timeline("#{handle}")[0..4]
+    end  
   end
 end

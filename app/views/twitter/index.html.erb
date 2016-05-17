@@ -1,0 +1,14 @@
+<table class="table table-striped table-hover ">
+  <thead>
+    <h3>The Fleet is Buzzing</h3>
+  </thead>
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= image_tag(tweet.user.profile_image_url) %></td>
+        <td>@<%= tweet.user.screen_name %></td>
+        <td><%= tweet.text %></td>
+      </ul>
+    <% end %>
+  </tbody>
+</table>
