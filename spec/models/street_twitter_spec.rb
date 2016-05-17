@@ -14,5 +14,8 @@ RSpec.describe StreetTwitter, type: :model do
   end
 
   it "responds to truck_tweets with tweets for a specific truck" do
+    # street_tweet = StreetTwitter.new
+    # individual_tweets = street_tweet.truck_tweets
+    # expect(individual_tweets)
   end
 end

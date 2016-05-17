@@ -33,7 +33,11 @@
      background-color: #222222;
  }
 
- p#footer {
+ .push {
+   min-height: 100px;
+ }
+
+ p#logo {
    margin: auto 0px;
    padding-bottom: 0px;
    color: white;
