@@ -1,2 +1,6 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h3><%= @user.name %></h3>
+
+<% @user.trucks.each do |truck| %>
+  <%= truck.name %>
+  <%= truck.updated_at %>
+<% end %>
