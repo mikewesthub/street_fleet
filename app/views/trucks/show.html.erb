@@ -1,73 +1,84 @@
-<div class="row">
-  <div class="col-md-7">
-    <h1>
-      <strong><%= @truck.name %></strong>
-    </h1>
-    <% if @truck.most_recent_location.first %>
-    <div class="map-container-truck" id='mapTruck' style='width: 600px; height: 400px;'>
-      <script type="text/javascript">
-        var latlongTruckArray = [
-          <% @truck.most_recent_location.each do |location|%>
-          {
-            "type": "Feature",
-            "geometry": {
-              "type": "Point",
-              "coordinates": [<%= location.longitude %>, <%= location.latitude %>]
-            },
-            "properties": {
-              "title": " <%= location.truck.name %> ",
-              "marker-symbol": "car"
-            }
+<div class="col-md-7">
+  <h1>
+    <%= image_tag(@truck.tweets.first.user.profile_image_url)%>
+    <strong><%= @truck.name %></strong>
+  </h1>
+  <% if @truck.most_recent_location.first %>
+  <div class="map-container-truck" id='mapTruck' style='width: 600px; height: 400px;'>
+    <script type="text/javascript">
+      var latlongTruckArray = [
+        <% @truck.most_recent_location.each do |location|%>
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [<%= location.longitude %>, <%= location.latitude %>]
           },
-          <% end %>
-        ];
+          "properties": {
+            "title": " <%= location.truck.name %> ",
+            "marker-symbol": "car"
+          }
+        },
+        <% end %>
+      ];
 
-        var centerCoordinates = [<%= @truck.most_recent_location.first.longitude %>, <%= @truck.most_recent_location.first.latitude %>]
-      </script>
-    </div>
+      var centerCoordinates = [<%= @truck.most_recent_location.first.longitude %>, <%= @truck.most_recent_location.first.latitude %>]
+    </script>
+  </div>
+  <div>
     <h4>Current Location</h4>
     <%= @truck.most_recent_location.first.address %>
-  <% else %>
+    <% else %>
     <h4>Add a new location to display a map below.</h4>
-    <% end %>
-    <br>
-    <% if current_user %>
-    <%= link_to 'New Location', new_truck_location_path(truck_id: @truck.id), class:"btn btn-success" %>
     <% end %>
   </div>
 
-  <div class="col-md-5">
-    <div id="sidebar" class="well sidebar-nav">
-      <ul class="nav nav-list">
-        <li class="nav-header">
-          <p>
-            <strong>Contact</strong>
-          </p>
-        </li>
-        <li>
-          <p>
-            <strong>Twitter:</strong><%= @truck.twitter %></p>
-        </li>
-        <li>
-          <p>
-            <strong>Email:</strong><%= @truck.email %></p>
-        </li>
-        <li>
-          <p>
-            <strong>Phone:</strong><%= @truck.phone_1 %></p>
-        </li>
-        <li>
-          <p>
-            <strong>Web:</strong><%= link_to "#{@truck.name}'s website", @truck.website, target: "_blank" %></p>
-        </li>
-      </ul>
-      <div class="btn group">
-        <%  if current_user %>
-          <%= link_to 'Edit', edit_truck_path(@truck), class:"btn btn-primary" %>
-          <%= link_to 'Destroy', truck_path(@truck), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
-          <%= link_to 'Back', trucks_path, class:"btn btn-default" %>
-        <% end %>
-      </div>
-    </div>
+  <div id="truck_button" class="btn group">
+    <%  if current_user %>
+    <%= link_to 'New Location', new_truck_location_path(truck_id: @truck.id), class:"btn btn-info" %>
+    <%= link_to 'Edit', edit_truck_path(@truck), class:"btn btn-primary" %>
+    <%= link_to 'Destroy', truck_path(@truck), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+    <%= link_to 'Back', trucks_path, class:"btn btn-default" %>
+    <% end %>
   </div>
+
+  <div id="contact">
+    <ul class="nav nav-list">
+      <li>
+        <p>
+          <strong>Twitter:</strong><%= @truck.twitter %></p>
+      </li>
+      <li>
+        <p>
+          <strong>Email:</strong><%= @truck.email %></p>
+      </li>
+      <li>
+        <p>
+          <strong>Phone:</strong><%= @truck.phone_1 %></p>
+      </li>
+      <li>
+        <p>
+          <strong>Web:</strong><%= link_to "#{@truck.name}'s website", @truck.website, target: "_blank" %></p>
+      </li>
+    </ul>
+
+  </div>
+
+
+</div>
+
+<div id="twitter_pane" class="col-md-5">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Recent Tweets</h3>
+    </div>
+    <div class="panel-body">
+      <ul></li>
+      <%  @truck.tweets.each do |tweet| %>
+      <li><%= tweet.text %></li>
+      <hr>
+      <% end %>
+    </ul>
+  </div>
+</div>
 </div>
