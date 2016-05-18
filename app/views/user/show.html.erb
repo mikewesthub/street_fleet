@@ -1,6 +1,50 @@
-<h3><%= @user.name %></h3>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">User</h3>
+    </div>
+    <div class="panel-body">
+      <%= @user.email %>
+      <div class="pull-right">
+        <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-default" %>
+      </div>
+    </div>
+  </div>
 
-<% @user.trucks.each do |truck| %>
-  <%= truck.name %>
-  <%= truck.updated_at %>
-<% end %>
+  <% @user.trucks.each do |truck| %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Truck</h3>
+    </div>
+    <div class="panel-body">
+      <%= truck.name %>
+      <div class="pull-right">
+        <%= link_to 'Show', truck_path(id: truck.id), class:"btn btn-success" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Twitter</h3>
+    </div>
+    <div class="panel-body">
+      @<%= truck.twitter %>
+      <div class="pull-right">
+        <%= link_to 'Twitter', edit_truck_path(id: truck.id), class:"btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Last Updated</h3>
+    </div>
+    <div class="panel-body">
+      <%= truck.updated_at.inspect %>
+      <div class="pull-right">
+        <%= link_to 'New Location', new_truck_location_path(truck_id: truck.id), class:"btn btn-info" %>
+      </div>
+    </div>
+  </div>
+  <% end %>

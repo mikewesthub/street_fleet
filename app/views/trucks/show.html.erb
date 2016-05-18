@@ -63,9 +63,9 @@
       </ul>
       <div class="btn group">
         <%  if current_user %>
-        <%= link_to 'Edit', edit_truck_path(@truck), class:"btn btn-primary" %>
-        <%= link_to 'Destroy', truck_path(@truck), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
-        <%= link_to 'Back', trucks_path, class:"btn btn-default" %>
+          <%= link_to 'Edit', edit_truck_path(@truck), class:"btn btn-primary" %>
+          <%= link_to 'Destroy', truck_path(@truck), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+          <%= link_to 'Back', trucks_path, class:"btn btn-default" %>
         <% end %>
       </div>
     </div>
