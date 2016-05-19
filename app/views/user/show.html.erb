@@ -17,20 +17,10 @@
       <h3 class="panel-title">Truck</h3>
     </div>
     <div class="panel-body">
-      <%= truck.name %>
+        <div><%= truck.name %></div>
+        <div>@<%= truck.twitter %></div>
       <div class="pull-right">
         <%= link_to 'Show', truck_path(id: truck.id), class:"btn btn-success" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Twitter</h3>
-    </div>
-    <div class="panel-body">
-      @<%= truck.twitter %>
-      <div class="pull-right">
         <%= link_to 'Twitter', edit_truck_path(id: truck.id), class:"btn btn-primary" %>
       </div>
     </div>
