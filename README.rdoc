@@ -2,7 +2,15 @@
 
 ##StreetFleet
 
-Final coding project at The Iron Yard.
+This application exists to allow food truck proprietors to broadcast their
+location to patrons. Mapping is provided by the `MapboxGLJS API` and
+up-to-date geocoding is provided by the `Twitter API`
 
-This app is still a work in progress and will soon be accompanied by
-a thorough README.
+A version deployed to Heroku can be found [here.](https://warm-lake-89976.herokuapp.com/)
+
+##Tests
+All tests for this application are written in `Rspec` and can be run using
+the `rspec` command from the project directory.
+
+##Licensing
+Apache License 2.0
