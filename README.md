@@ -1,4 +1,4 @@
-== README
+###README
 
 ##StreetFleet
 
@@ -10,7 +10,7 @@ A version deployed to Heroku can be found [here.](https://warm-lake-89976.heroku
 
 ##Contributions
 StreetFleet is still in early stage development but will continue to grow
-and Pull Requests are welcome. 
+and Pull Requests are welcome.
 
 ##Tests
 All tests for this application are written in `Rspec` and can be run using
