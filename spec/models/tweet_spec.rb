@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Tweet, type: :model do
+RSpec.describe TweetDecorator, type: :model do
   describe "when a place is given" do
     let(:fake_bounding_box) do
       double(:bounding_box,
@@ -21,7 +21,7 @@ RSpec.describe Tweet, type: :model do
     let(:fake_tweet) { double(:tweet, geo: nil, place: fake_place) }
 
     it 'returns coordinates if place is present' do
-      expect(Tweet.new(fake_tweet).geo_point).to eq [-77.01441639593564, 38.89860285]
+      expect(TweetDecorator.new(fake_tweet).geo_point).to eq [-77.01441639593564, 38.89860285]
     end
   end
 
@@ -31,7 +31,7 @@ RSpec.describe Tweet, type: :model do
     let(:fake_tweet) { double( :tweet, geo: fake_geo, place: nil) }
 
     it 'returns coordinates if place is present' do
-      expect(Tweet.new(fake_tweet).geo_point).to eq [-77.04248441, 38.90606691]
+      expect(TweetDecorator.new(fake_tweet).geo_point).to eq [-77.04248441, 38.90606691]
     end
 
   end

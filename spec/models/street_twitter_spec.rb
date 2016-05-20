@@ -16,6 +16,6 @@ RSpec.describe StreetTwitter, type: :model do
   it "responds to tweets_for_handle with tweets for a specific truck" do
     street_tweet = StreetTwitter.new
     individual_tweets = street_tweet.tweets_for_handle("ChixNStixDC")
-    expect(individual_tweets.first).to be_a(Twitter::Tweet)
+    expect(individual_tweets.first).to be_a(TweetDecorator)
   end
 end
