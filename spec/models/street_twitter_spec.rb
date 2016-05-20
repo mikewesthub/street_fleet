@@ -9,13 +9,13 @@ RSpec.describe StreetTwitter, type: :model do
 
   it "responds to home_timeline method with an array of tweets" do
     street_tweet = StreetTwitter.new
-    truck_tweets = street_tweet.home_tweets
-    expect(truck_tweets.first).to be_a(Twitter::Tweet)
+    tweets_for_handle = street_tweet.home_tweets
+    expect(tweets_for_handle.first).to be_a(Twitter::Tweet)
   end
 
-  it "responds to truck_tweets with tweets for a specific truck" do
+  it "responds to tweets_for_handle with tweets for a specific truck" do
     street_tweet = StreetTwitter.new
-    individual_tweets = street_tweet.truck_tweets("ChixNStixDC")
+    individual_tweets = street_tweet.tweets_for_handle("ChixNStixDC")
     expect(individual_tweets.first).to be_a(Twitter::Tweet)
   end
 end

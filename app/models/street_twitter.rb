@@ -1,7 +1,7 @@
 require 'twitter'
 
 class StreetTwitter
-  attr_reader :client, :home_tweets, :truck_tweets
+  attr_reader :client
 
   def initialize
     @client = Twitter::REST::Client.new do |config|
@@ -18,7 +18,7 @@ class StreetTwitter
     end
   end
 
-  def truck_tweets(handle)
+  def tweets_for_handle(handle)
     Rails.cache.fetch("twitter_#{handle}", expires_in: 30.minutes.from_now) do
       client.user_timeline(handle)
     end

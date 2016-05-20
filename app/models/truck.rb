@@ -8,6 +8,6 @@ class Truck < ActiveRecord::Base
   end
 
   def tweets
-    StreetTwitter.new.truck_tweets(twitter)[0..9]
+    StreetTwitter.new.tweets_for_handle(twitter)[0..9]
   end
 end
