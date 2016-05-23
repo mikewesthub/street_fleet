@@ -33,8 +33,10 @@ ActiveRecord::Schema.define(version: 20160523144610) do
     t.datetime "updated_at", null: false
     t.integer  "truck_id"
     t.string   "address"
-    t.integer  "twitter_id"
+    t.string   "twitter_id"
   end
+
+  add_index "locations", ["twitter_id"], name: "index_locations_on_twitter_id", using: :btree
 
   create_table "trucks", force: :cascade do |t|
     t.string   "name"

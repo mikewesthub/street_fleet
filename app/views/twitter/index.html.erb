@@ -6,8 +6,9 @@
     <% @tweets.each do |tweet| %>
       <tr>
         <td><%= image_tag(tweet.user.profile_image_url) %></td>
-        <td>@<%= tweet.user.screen_name %></td>
+        <td>@<%= link_to "#{tweet.user.screen_name}" %></td>
         <td><%= tweet.text %></td>
+        <td><%= time_ago_in_words(tweet.created_at) %></td>
       </tr>
     <% end %>
   </tbody>
