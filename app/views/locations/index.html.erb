@@ -1,3 +1,5 @@
+
+
 <div class="map-container" id='mapIndex'>
   <script type="text/javascript">
     var latlongArray = [
@@ -12,10 +14,12 @@
           ]
         },
         "properties": {
-          "title": " <%= location.truck.name %> ",
-          "marker-symbol": "restaurant"
+          "title": "<%= location.truck.name %>" ,
+          "marker-symbol": "restaurant",
+          url: "<%= truck_path(location.truck.id )%>"
         }
       },
+
       <% end %>
     ];
 

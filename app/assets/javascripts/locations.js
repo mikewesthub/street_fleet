@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-  // ================-=========================================================
+  // =========================================================================
 
   if ($("#new_location").length > 0 ) {
 
@@ -16,7 +16,7 @@ $(document).ready(function() {
     });
   }
 
-  // ================-=========================================================
+  // =========================================================================
 
   if ($(".map-container").length > 0) {
 
@@ -52,6 +52,21 @@ $(document).ready(function() {
         }
       });
     });
+
+    map.on("click", function (e) {
+       var features = map.queryRenderedFeatures(e.point, { layers: ["markers"] });
+
+       if (!features.length) {
+           return;
+       }
+
+       var feature = features[0];
+
+       var popup = new mapboxgl.Popup()
+           .setLngLat(feature.geometry.coordinates)
+           .setHTML("<p class='map-activity-title'><a href='"+feature.properties.url+"'>"+ feature.properties.title + "</a></p>" + feature.properties.date)
+           .addTo(map);
+   });
 
     navigator.geolocation.getCurrentPosition(function(position) {
       var current_location = [position.coords.longitude, position.coords.latitude]
