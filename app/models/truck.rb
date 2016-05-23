@@ -8,6 +8,8 @@ class Truck < ActiveRecord::Base
   end
 
   def tweets
-    StreetTwitter.new.tweets_for_handle(twitter)[0..9]
+    tweets = StreetTwitter.new.tweets_for_handle(twitter)[0..9]
+    TweetLocationPersistor.new(tweets, id).persist_locations
+    tweets
   end
 end
