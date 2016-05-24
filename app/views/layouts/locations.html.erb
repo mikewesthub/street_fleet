@@ -45,7 +45,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">StreetFleet</a>
+        <a class="navbar-brand" href="/"><%= fa_icon("cutlery", text: "StreetFleet") %></a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav pull-right">
             <li><%= link_to "Map", locations_path  %></li>
@@ -62,21 +62,11 @@
       </div>
     </div>
 
-    <%= yield %>
+      <%= bootstrap_flash %>
+      <%= yield %>
 
-    <div class="container">
-      <footer class="footer navbar-fixed-bottom">
-        <aside id="copyright">
-          &copy; StreetFleetDC 2016
-        </aside>
-        <aside id="social-icons">
-          <%= link_to fa_icon("twitter 3x"),"https:twitter.com/streetfleetdc", target: 'blank'  %>
-          <%= link_to fa_icon("facebook 3x"), "https://www.facebook.com/profile.php?id=100012221173835", target: 'blank'%>
-          <%= link_to fa_icon("snapchat-ghost 3x") %>
-          <%= link_to fa_icon("instagram 3x") %>
-        </aside>
-      </footer>
-    </div>
+      <%= render partial: "layouts/footer" %>
+
     <!-- /container -->
 
   </body>

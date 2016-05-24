@@ -65,21 +65,10 @@
     <div class="container">
       <%= bootstrap_flash %>
       <%= yield %>
-
-      <div class="push"></div>
-
-      <footer class="footer navbar-fixed-bottom">
-        <p id="logo">&copy; StreetFleetDC 2016</p>
-        <aside id="social-icons">
-            <%= link_to fa_icon("twitter 3x"),"https:twitter.com/streetfleetdc", target: 'blank'  %>
-            <%= link_to fa_icon("facebook 3x"), "https://www.facebook.com/profile.php?id=100012221173835", target: 'blank'%>
-            <%= link_to fa_icon("snapchat-ghost 3x") %>
-            <%= link_to fa_icon("instagram 3x") %>
-        </aside>
-
-      </footer>
-
     </div>
+      <%= render partial: "layouts/footer" %>
+
+
     <!-- /container -->
 
   </body>

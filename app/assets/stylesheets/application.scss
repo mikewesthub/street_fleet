@@ -30,14 +30,12 @@ footer {
   min-height: 80px;
   background-color: #222222;
 }
-.push {
-  min-height: 100px;
-}
 
-footer {
+footer, .push {
   $color: #ddd;
-  padding: 15px 30px;
+  padding: 25px 30px;
   color: $color;
+  clear: both;
 
   #copyright {
     float: left;

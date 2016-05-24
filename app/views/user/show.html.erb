@@ -1,6 +1,6 @@
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= fa_icon("user 2x", text: "User")%></h3>
+      <h3 class="panel-title"><%= fa_icon("user", text: "User")%></h3>
     </div>
     <div class="panel-body">
       <%= @user.email %>
@@ -14,7 +14,7 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= fa_icon("truck 2x", text: "Truck")%></h3>
+      <h3 class="panel-title"><%= fa_icon("truck", text: "Truck")%></h3>
     </div>
     <div class="panel-body">
         <div><%= truck.name %></div>
@@ -28,7 +28,7 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= fa_icon("clock-o 2x", text: "Last Updated")%></h3>
+      <h3 class="panel-title"><%= fa_icon("clock-o", text: "Last Updated")%></h3>
     </div>
     <div class="panel-body">
       <%= time_ago_in_words(truck.updated_at.inspect) %>
