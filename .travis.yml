@@ -1,0 +1,18 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.3.0
+services:
+  - postgresql
+  - redis
+before_install:
+  - gem update --system
+  - gem --version
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 1
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
+
+script: bundle exec rake
