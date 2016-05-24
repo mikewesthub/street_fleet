@@ -36,10 +36,10 @@
 
   <div id="truck_button" class="btn group">
     <%  if current_user %>
-    <%= link_to 'New Location', new_truck_location_path(truck_id: @truck.id), class:"btn btn-info" %>
-    <%= link_to 'Edit', edit_truck_path(@truck), class:"btn btn-primary" %>
-    <%= link_to 'Destroy', truck_path(@truck), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
-    <%= link_to 'Back', trucks_path, class:"btn btn-default" %>
+    <%= link_to fa_icon("globe", text: 'New Location'), new_truck_location_path(truck_id: @truck.id), class:"btn btn-info" %>
+    <%= link_to fa_icon("pencil", text: "Edit"), edit_truck_path(@truck), class:"btn btn-primary" %>
+    <%= link_to fa_icon("trash", text: 'Destroy'), truck_path(@truck), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+    <%= link_to fa_icon("chevron-left", text: 'Back'), trucks_path, class:"btn btn-default" %>
     <% end %>
   </div>
 
@@ -47,19 +47,23 @@
     <ul class="nav nav-list">
       <li>
         <p>
-          <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>  @<%= link_to "#{@truck.twitter}", "http://twitter.com/#{@truck.twitter}", target: "_blank" %></p>
+          <%= fa_icon("twitter") %>
+          @<%= link_to "#{@truck.twitter}", "http://twitter.com/#{@truck.twitter}", target: "_blank" %></p>
       </li>
       <li>
         <p>
-          <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>  <%= @truck.email %></p>
+          <%= fa_icon("envelope") %>
+          <%= @truck.email %></p>
       </li>
       <li>
         <p>
-          <i class="fa fa-phone fa-2x" aria-hidden="true"></i>  <%= @truck.phone_1 %></p>
+          <%= fa_icon("phone") %>
+          <%= @truck.phone_1 %></p>
       </li>
       <li>
         <p>
-          <i class="fa fa-globe fa-2x" aria-hidden="true"></i>  <%= link_to "#{@truck.name}'s website", @truck.website, target: "_blank" %></p>
+          <%= fa_icon("link") %>
+          <%= link_to "#{@truck.name}'s website", @truck.website, target: "_blank" %></p>
       </li>
     </ul>
 

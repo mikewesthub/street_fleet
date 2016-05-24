@@ -71,7 +71,7 @@ $(document).ready(function() {
        var feature = features[0];
 
        popup.setLngLat(feature.geometry.coordinates)
-         .setHTML("<p class='map-activity-title'><a href='"+feature.properties.url+"'>"+ feature.properties.title + "</a></p>" + feature.properties.address)
+         .setHTML("<p class='map-activity-title'><a href='"+feature.properties.url+"'>"+ feature.properties.truck_title + "</a></p>" + feature.properties.address)
          .addTo(map)
 
    });

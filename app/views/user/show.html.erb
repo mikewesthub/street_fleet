@@ -1,11 +1,11 @@
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">User</h3>
+      <h3 class="panel-title"><%= fa_icon("user 2x", text: "User")%></h3>
     </div>
     <div class="panel-body">
       <%= @user.email %>
       <div class="pull-right">
-        <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-default" %>
+        <%= link_to fa_icon("pencil", text: "Edit"), edit_user_registration_path(@user), class:"btn btn-default" %>
       </div>
     </div>
   </div>
@@ -14,26 +14,26 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Truck</h3>
+      <h3 class="panel-title"><%= fa_icon("truck 2x", text: "Truck")%></h3>
     </div>
     <div class="panel-body">
         <div><%= truck.name %></div>
         <div>@<%= truck.twitter %></div>
       <div class="pull-right">
-        <%= link_to 'Show', truck_path(id: truck.id), class:"btn btn-success" %>
-        <%= link_to 'Twitter', "http://twitter.com/#{truck.twitter}", target: "_blank", class:"btn btn-primary" %>
+        <%= link_to fa_icon("eye", text: "Show"), truck_path(id: truck.id), class:"btn btn-success" %>
+        <%= link_to fa_icon("twitter", text: "Twitter"), "http://twitter.com/#{truck.twitter}", target: "_blank", class:"btn btn-primary" %>
       </div>
     </div>
   </div>
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Last Updated</h3>
+      <h3 class="panel-title"><%= fa_icon("clock-o 2x", text: "Last Updated")%></h3>
     </div>
     <div class="panel-body">
       <%= time_ago_in_words(truck.updated_at.inspect) %>
       <div class="pull-right">
-        <%= link_to 'New Location', new_truck_location_path(truck_id: truck.id), class:"btn btn-info" %>
+        <%= link_to fa_icon("globe", text: "New Location"), new_truck_location_path(truck_id: truck.id), class:"btn btn-info" %>
       </div>
     </div>
   </div>
