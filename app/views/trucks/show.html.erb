@@ -47,7 +47,7 @@
     <ul class="nav nav-list">
       <li>
         <p>
-          <strong>Twitter:</strong>@<%= @truck.twitter %></p>
+          <strong>Twitter:</strong>@<%= link_to "#{@truck.twitter}", "http://twitter.com/#{@truck.twitter}", target: "_blank" %></p>
       </li>
       <li>
         <p>

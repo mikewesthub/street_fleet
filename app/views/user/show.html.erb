@@ -21,7 +21,7 @@
         <div>@<%= truck.twitter %></div>
       <div class="pull-right">
         <%= link_to 'Show', truck_path(id: truck.id), class:"btn btn-success" %>
-        <%= link_to 'Twitter', edit_truck_path(id: truck.id), class:"btn btn-primary" %>
+        <%= link_to 'Twitter', "http://twitter.com/#{truck.twitter}", target: "_blank", class:"btn btn-primary" %>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@
       <h3 class="panel-title">Last Updated</h3>
     </div>
     <div class="panel-body">
-      <%= truck.updated_at.inspect %>
+      <%= time_ago_in_words(truck.updated_at.inspect) %>
       <div class="pull-right">
         <%= link_to 'New Location', new_truck_location_path(truck_id: truck.id), class:"btn btn-info" %>
       </div>
