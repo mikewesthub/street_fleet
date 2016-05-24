@@ -53,19 +53,27 @@ $(document).ready(function() {
       });
     });
 
-    map.on("click", function (e) {
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+      });
+
+    map.on("mousemove", function (e) {
        var features = map.queryRenderedFeatures(e.point, { layers: ["markers"] });
 
+       map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+
        if (!features.length) {
-           return;
+            popup.remove();
+            return;
        }
 
        var feature = features[0];
 
-       var popup = new mapboxgl.Popup()
-           .setLngLat(feature.geometry.coordinates)
-           .setHTML("<p class='map-activity-title'><a href='"+feature.properties.url+"'>"+ feature.properties.title + "</a></p>" + feature.properties.address)
-           .addTo(map);
+       popup.setLngLat(feature.geometry.coordinates)
+         .setHTML("<p class='map-activity-title'><a href='"+feature.properties.url+"'>"+ feature.properties.title + "</a></p>" + feature.properties.address)
+         .addTo(map)
+
    });
 
     navigator.geolocation.getCurrentPosition(function(position) {
