@@ -1,6 +1,7 @@
-#README
-
 ##StreetFleet
+
+[![Build Status](https://travis-ci.org/westmd23/street_fleet.svg?branch=master)](https://travis-ci.org/westmd23/street_fleet)
+
 
 This application exists to allow food truck proprietors to broadcast their
 location to patrons. Mapping is provided by the `MapboxGLJS API` and
