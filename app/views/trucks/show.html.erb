@@ -1,6 +1,6 @@
 <div class="col-md-7">
   <h1>
-    <%= image_tag(@truck.tweets.first.user.profile_image_url)%>
+    <%= image_tag(@truck.tweets.first.user.profile_image_url, class: "img-rounded") %>
     <strong><%= @truck.name %></strong>
   </h1>
   <% if @truck.most_recent_location.first %>
@@ -47,19 +47,19 @@
     <ul class="nav nav-list">
       <li>
         <p>
-          <strong>Twitter:</strong>@<%= link_to "#{@truck.twitter}", "http://twitter.com/#{@truck.twitter}", target: "_blank" %></p>
+          <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>  @<%= link_to "#{@truck.twitter}", "http://twitter.com/#{@truck.twitter}", target: "_blank" %></p>
       </li>
       <li>
         <p>
-          <strong>Email:</strong><%= @truck.email %></p>
+          <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>  <%= @truck.email %></p>
       </li>
       <li>
         <p>
-          <strong>Phone:</strong><%= @truck.phone_1 %></p>
+          <i class="fa fa-phone fa-2x" aria-hidden="true"></i>  <%= @truck.phone_1 %></p>
       </li>
       <li>
         <p>
-          <strong>Web:</strong><%= link_to "#{@truck.name}'s website", @truck.website, target: "_blank" %></p>
+          <i class="fa fa-globe fa-2x" aria-hidden="true"></i>  <%= link_to "#{@truck.name}'s website", @truck.website, target: "_blank" %></p>
       </li>
     </ul>
 
