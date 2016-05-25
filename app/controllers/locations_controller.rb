@@ -39,8 +39,8 @@ class LocationsController < ApplicationController
     return if authorize_user_by_location
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
-        format.json { render json: @location, status: :created }
+        format.html { redirect_to truck_path(id: @location.truck_id), notice: 'Location was successfully created.' }
+        format.json { render json: truck_path(id: @location.truck_id), status: :created }
       else
         format.html { render action: 'new' }
         format.json { render json: @location.errors, status: :unprocessable_entity }

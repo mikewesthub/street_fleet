@@ -97,8 +97,9 @@ RSpec.describe LocationsController, type: :controller do
       end
 
       it "redirects to the created location" do
-        post :create, {:location => valid_attributes}
-        expect(response).to redirect_to(Location.last)
+        @truck = Truck.create( id: 2, name: "Tacos", user_id: @user.id )
+        post :create, {:location => { truck_id: 2, longitude: 3, latitude: 3 }}
+        expect(response).to redirect_to(truck_path(@truck.id))
       end
     end
 
