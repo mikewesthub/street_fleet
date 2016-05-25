@@ -6,25 +6,9 @@ div#heading {
   text-color: white;
 }
 
-iframe#bgvid {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    -webkit-filter: blur(7px);
-}
-
 div#nav-btn {
   text-align: center;
-  margin-top: 18%;
+  margin-top: 23%;
 }
 
 #lineup {
@@ -41,5 +25,5 @@ div#nav-btn {
   -webkit-transform: translateX(-50%) translateY(-50%);
   -webkit-filter: blur(7px);
   transform: translateX(-50%) translateY(-50%);
-  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
 }

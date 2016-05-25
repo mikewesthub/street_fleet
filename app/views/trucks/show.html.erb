@@ -1,6 +1,6 @@
 <div class="col-md-7">
   <h1>
-    <%= image_tag(@truck.tweets.first.user.profile_image_url, class: "img-circle") %>
+    <%= image_tag(@truck.tweets.first.user.profile_image_url, class: "img-rounded") %>
     <strong><%= @truck.name %></strong>
   </h1>
   <% if @truck.most_recent_location.first %>
