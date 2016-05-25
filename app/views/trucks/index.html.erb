@@ -1,31 +1,35 @@
 
 
-<h3>On the roll</h3>
-<%= link_to fa_icon("truck", text: "Add a Truck"), new_truck_path, class: "btn btn-success" %>
+<h2>
+  <strong>The Fleet is Rolling</strong>
+  <div id="index_add_truck">
+    <%= link_to fa_icon("truck", text: "Add a Truck"), new_truck_path, class: "btn btn-success" %>
+  </div>
+</h2>
 
-<table class="table table-striped table-hover ">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Last Active</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @trucks.order(id: :desc).each do |truck| %>
+<div class="panel panel-default">
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= link_to "#{truck.name}", truck %></td>
-        <td>
-            <% if truck.locations.last %>
-              <%= truck.locations.last.address %>
-            <% end %>
-        </td>
-        <td><%= time_ago_in_words(truck.created_at) + " ago"%></td>
+        <th></th>
+        <th><%= fa_icon("globe", text: "Last Location")%></th>
+        <th><%= fa_icon("clock-o", text: "Last Active")%></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @trucks.order(id: :desc).each do |truck| %>
+        <tr>
+          <td><%= link_to "#{truck.name}", truck %></td>
+          <td>
+              <% if truck.locations.last %>
+                <%= truck.locations.last.address %>
+              <% end %>
+          </td>
+          <td><%= time_ago_in_words(truck.created_at) + " ago"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>

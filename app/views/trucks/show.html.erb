@@ -1,93 +1,95 @@
-
 <div class="col-md-7">
-  <h1>
-    <%= image_tag(@truck.tweets.first.user.profile_image_url, class: "img-rounded") %>
-    <strong><%= @truck.name %></strong>
-  </h1>
-  <% if @truck.most_recent_location.first %>
-  <div class="map-container-truck" id='mapTruck' style='width: 600px; height: 400px;'>
-    <script type="text/javascript">
-      var latlongTruckArray = [
-        <% @truck.most_recent_location.each do |location|%>
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [<%= location.longitude %>, <%= location.latitude %>]
-          },
-          "properties": {
-            "title": " <%= location.truck.name %> ",
-            "marker-symbol": "restaurant"
+  <div id="info_pane" class="panel panel-default">
+    <div id="truck_header" class="panel-heading">
+      <h2>
+        <%= image_tag(@truck.tweets.first.user.profile_image_url, class: "img-circle") %>
+        <%= @truck.name %>
+      </h2>
+    </div>
+    <div class="panel-body">
+      <% if @truck.most_recent_location.first %>
+      <div class="map-container-truck" id='mapTruck' style='width: 600px; height: 400px;'>
+        <script type="text/javascript">
+          var latlongTruckArray = [
+            <% @truck.most_recent_location.each do |location|%>
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [<%= location.longitude %>, <%= location.latitude %>]
+              },
+              "properties": {
+                "title": " <%= location.truck.name %> ",
+                "marker-symbol": "restaurant"
 
-          }
-        },
+              }
+            },
+            <% end %>
+          ];
+
+          var centerCoordinates = [<%= @truck.most_recent_location.first.longitude %>, <%= @truck.most_recent_location.first.latitude %>]
+        </script>
+      </div>
+      <div>
+        <h4>Current Location</h4>
+        <%= @truck.most_recent_location.first.address %>
+      <% else %>
+        <h4>Add a new location to display a map below.</h4>
         <% end %>
-      ];
+      </div>
 
-      var centerCoordinates = [<%= @truck.most_recent_location.first.longitude %>, <%= @truck.most_recent_location.first.latitude %>]
-    </script>
-  </div>
-  <div>
-    <h4>Current Location</h4>
-    <%= @truck.most_recent_location.first.address %>
-    <% else %>
-    <h4>Add a new location to display a map below.</h4>
-    <% end %>
-  </div>
+      <div id="truck_button" class="btn group btn-group-justified" role="group">
+        <%  if current_user %>
+        <%= link_to fa_icon("globe", text: 'New Location'), new_truck_location_path(truck_id: @truck.id), class:"btn btn-success" %>
+        <%= link_to fa_icon("pencil", text: "Edit"), edit_truck_path(@truck), class:"btn btn-primary" %>
+        <% end %>
+      </div>
 
-  <div id="truck_button" class="btn group">
-    <%  if current_user %>
-      <%= link_to fa_icon("globe", text: 'New Location'), new_truck_location_path(truck_id: @truck.id), class:"btn btn-success" %>
-      <%= link_to fa_icon("pencil", text: "Edit"), edit_truck_path(@truck), class:"btn btn-primary" %>
-      <%= link_to fa_icon("truck", text: 'Trucks'), trucks_path, class:"btn btn-info" %>
-    <% end %>
-  </div>
-
-  <div id="contact">
-    <ul class="nav nav-list">
-      <li>
-        <p>
-          <%= fa_icon("link") %>
-          <%= link_to "#{@truck.name}'s website", @truck.website, target: "_blank" %></p>
-      </li>
-      <li>
-        <p>
-          <%= fa_icon("twitter") %>
-          <%= link_to "#{@truck.twitter}", "http://twitter.com/#{@truck.twitter}", target: "_blank" %></p>
-      </li>
+      <div id="contact">
+        <ul class="nav nav-list">
+          <li>
+            <p>
+              <%= fa_icon("link") %>
+              <%= link_to "#{@truck.name}'s website", @truck.website, target: "_blank" %></p>
+          </li>
+          <li>
+            <p>
+              <%= fa_icon("twitter") %>
+              <%= link_to "#{@truck.twitter}", "http://twitter.com/#{@truck.twitter}", target: "_blank" %></p>
+          </li>
           <% unless @truck.email == "" %>
-      <li>
-        <p>
+          <li>
+            <p>
 
-            <%= fa_icon("envelope") %>
-            <%= @truck.email %>
-        </p>
-      </li>
+              <%= fa_icon("envelope") %>
+              <%= @truck.email %>
+            </p>
+          </li>
           <% end %>
           <% unless @truck.phone_1 == "" %>
-      <li>
-        <p>
-            <%= fa_icon("phone") %>
-            <%= @truck.phone_1 %>
-        </p>
-      </li>
+          <li>
+            <p>
+              <%= fa_icon("phone") %>
+              <%= @truck.phone_1 %>
+            </p>
+          </li>
           <% end %>
-    </ul>
-    <div class="btn group">
-      <%  if current_user %>
-        <%= link_to fa_icon("trash", text: 'Delete'), truck_path(@truck),
+        </ul>
+        <div class="btn group">
+          <%  if current_user %>
+          <%= link_to fa_icon("trash", text: 'Delete'), truck_path(@truck),
           method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
-      <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-
-
 </div>
 
 <div id="twitter_pane" class="col-md-5">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">Recent Tweets</h3>
+      <h3 class="panel-title"><%= fa_icon("twitter-square", text: "Recent Tweets")%></h3>
     </div>
     <div class="panel-body">
       <ul></li>
