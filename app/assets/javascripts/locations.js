@@ -27,7 +27,7 @@ $(document).ready(function() {
       center: [-77.06274032592773,
         38.896109869098964
       ],
-      zoom: 14
+      zoom: 13
     });
 
     map.on('load', function() {

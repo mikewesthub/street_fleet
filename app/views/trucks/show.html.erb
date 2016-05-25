@@ -37,15 +37,19 @@
 
   <div id="truck_button" class="btn group">
     <%  if current_user %>
-    <%= link_to fa_icon("globe", text: 'New Location'), new_truck_location_path(truck_id: @truck.id), class:"btn btn-success" %>
-    <%= link_to fa_icon("pencil", text: "Edit"), edit_truck_path(@truck), class:"btn btn-primary" %>
-    <%= link_to fa_icon("truck", text: 'Trucks'), trucks_path, class:"btn btn-info" %>
-
+      <%= link_to fa_icon("globe", text: 'New Location'), new_truck_location_path(truck_id: @truck.id), class:"btn btn-success" %>
+      <%= link_to fa_icon("pencil", text: "Edit"), edit_truck_path(@truck), class:"btn btn-primary" %>
+      <%= link_to fa_icon("truck", text: 'Trucks'), trucks_path, class:"btn btn-info" %>
     <% end %>
   </div>
 
   <div id="contact">
     <ul class="nav nav-list">
+      <li>
+        <p>
+          <%= fa_icon("link") %>
+          <%= link_to "#{@truck.name}'s website", @truck.website, target: "_blank" %></p>
+      </li>
       <li>
         <p>
           <%= fa_icon("twitter") %>
@@ -68,15 +72,12 @@
         </p>
       </li>
           <% end %>
-      <li>
-        <p>
-          <%= fa_icon("link") %>
-          <%= link_to "#{@truck.name}'s website", @truck.website, target: "_blank" %></p>
-      </li>
     </ul>
     <div class="btn group">
-      <%= link_to fa_icon("trash", text: 'Delete'), truck_path(@truck),
-        method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+      <%  if current_user %>
+        <%= link_to fa_icon("trash", text: 'Delete'), truck_path(@truck),
+          method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+      <% end %>
     </div>
   </div>
 
