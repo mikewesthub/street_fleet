@@ -52,13 +52,17 @@
       </li>
       <li>
         <p>
-          <%= fa_icon("envelope") %>
-          <%= @truck.email %></p>
+          <% unless @truck.email == "" %>
+            <%= fa_icon("envelope") %>
+            <%= @truck.email %></p>
+          <% end %>
       </li>
       <li>
         <p>
-          <%= fa_icon("phone") %>
-          <%= @truck.phone_1 %></p>
+          <% unless @truck.phone_1 == "" %>
+            <%= fa_icon("phone") %>
+            <%= @truck.phone_1 %></p>
+          <% end %>
       </li>
       <li>
         <p>
