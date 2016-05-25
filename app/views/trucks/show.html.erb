@@ -1,3 +1,4 @@
+
 <div class="col-md-7">
   <h1>
     <%= image_tag(@truck.tweets.first.user.profile_image_url, class: "img-rounded") %>
@@ -36,10 +37,10 @@
 
   <div id="truck_button" class="btn group">
     <%  if current_user %>
-    <%= link_to fa_icon("globe", text: 'New Location'), new_truck_location_path(truck_id: @truck.id), class:"btn btn-info" %>
+    <%= link_to fa_icon("globe", text: 'New Location'), new_truck_location_path(truck_id: @truck.id), class:"btn btn-success" %>
     <%= link_to fa_icon("pencil", text: "Edit"), edit_truck_path(@truck), class:"btn btn-primary" %>
-    <%= link_to fa_icon("trash", text: 'Destroy'), truck_path(@truck), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
-    <%= link_to fa_icon("chevron-left", text: 'Back'), trucks_path, class:"btn btn-default" %>
+    <%= link_to fa_icon("truck", text: 'Trucks'), trucks_path, class:"btn btn-info" %>
+
     <% end %>
   </div>
 
@@ -48,29 +49,35 @@
       <li>
         <p>
           <%= fa_icon("twitter") %>
-          @<%= link_to "#{@truck.twitter}", "http://twitter.com/#{@truck.twitter}", target: "_blank" %></p>
+          <%= link_to "#{@truck.twitter}", "http://twitter.com/#{@truck.twitter}", target: "_blank" %></p>
       </li>
-      <li>
-        <p>
           <% unless @truck.email == "" %>
-            <%= fa_icon("envelope") %>
-            <%= @truck.email %></p>
-          <% end %>
-      </li>
       <li>
         <p>
-          <% unless @truck.phone_1 == "" %>
-            <%= fa_icon("phone") %>
-            <%= @truck.phone_1 %></p>
-          <% end %>
+
+            <%= fa_icon("envelope") %>
+            <%= @truck.email %>
+        </p>
       </li>
+          <% end %>
+          <% unless @truck.phone_1 == "" %>
+      <li>
+        <p>
+            <%= fa_icon("phone") %>
+            <%= @truck.phone_1 %>
+        </p>
+      </li>
+          <% end %>
       <li>
         <p>
           <%= fa_icon("link") %>
           <%= link_to "#{@truck.name}'s website", @truck.website, target: "_blank" %></p>
       </li>
     </ul>
-
+    <div class="btn group">
+      <%= link_to fa_icon("trash", text: 'Delete'), truck_path(@truck),
+        method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+    </div>
   </div>
 
 

@@ -6,7 +6,10 @@
     <% @tweets.each do |tweet| %>
       <tr>
         <td><%= image_tag(tweet.user.profile_image_url, class: "img-circle")%></td>
-        <td>@<%= link_to "#{tweet.user.screen_name}", "http://twitter.com/#{tweet.user.screen_name}", target: "_blank" %></td>
+        <td class="tweet_column">
+          <%= link_to fa_icon("twitter", text: "#{tweet.user.screen_name}"),
+          "http://twitter.com/#{tweet.user.screen_name}", target: "_blank" %>
+        </td>
         <td><%= tweet.text %></td>
         <td><%= time_ago_in_words(tweet.created_at) %></td>
       </tr>
