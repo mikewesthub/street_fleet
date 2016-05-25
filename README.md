@@ -13,6 +13,11 @@ A version deployed to Heroku can be found [here.](http://streetfleet.herokuapp.c
 StreetFleet is still in early stage development but will continue to grow
 and Pull Requests are welcome.
 
+##Dependencies
+`"ruby", "~> 2.2"`
+`"redis", "~> 2.2"`
+`"pg", "~> 0.18.4"`
+
 ##Tests
 All tests for this application are written in `Rspec` and can be run using
 the `rspec` command from the project directory.
