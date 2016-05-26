@@ -1,26 +1,46 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="twitter-btn">
+  <%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+  <%= link_to fa_icon("twitter", text:"Login with #{OmniAuth::Utils.camelize(provider)}"),
+    omniauth_authorize_path(resource_name, provider), class: "btn btn-primary" %><br/>
+  <% end -%>
+  <% end -%>
+</div>
+<h4><strong>Alternative Login</strong></h4>
+  <form>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <div class="field">
+        <%= f.label :email %><br/>
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="field">
+        <%= f.label :password %><br/>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+    </div>
+    <% if devise_mapping.rememberable? -%>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
-  <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in", class:"btn btn-success" %>
-  </div>
-<% end %>
+    <% end -%>
+    <div id="login-btns" class="button-group">
+      <%= f.submit "Log in", class:"btn btn-success" %>
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary" %><br/>
+      <% end -%>
+    </div>
+    <% end %>
+  </form>
 
-<%= render "devise/shared/links" %>
+<div>
+  <%= render "devise/shared/links" %>
+</div>
+
+</div>

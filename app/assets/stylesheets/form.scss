@@ -14,53 +14,15 @@
  *= require_self
  *= require font-awesome
  */
-body {
-  background-color: #EEE;
-}
 
-h2 {
-  margin: 3% auto;
-}
+ .form-group {
+   margin: 20px auto;
+ }
 
-h3 {
-  margin-top: 10% ;
-}
+ .twitter-btn {
+   margin: 40px auto;
+ }
 
-.push {
-  min-height: 100px;
-}
-
-#navbar {
-  margin-bottom: 0;
-}
-#mapIndex {
-  width: 100%;
-  height: 90%;
-  position: absolute;
-}
-footer {
-  width: 100%;
-  min-height: 80px;
-  background-color: #222222;
-}
-
-footer, .push {
-  $color: #ddd;
-  padding: 25px 30px;
-  color: $color;
-  clear: both;
-
-  #copyright {
-    float: left;
-    margin: auto 0;
-    padding-bottom: 0;
-  }
-  #social-icons {
-    float: right;
-
-    a {
-      color: $color;
-      padding: 5px;
-    }
-  }
-}
+ #login-btns {
+   margin-top: 40px;
+ }
