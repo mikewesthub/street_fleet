@@ -8,7 +8,7 @@ $(document).ready(function() {
       container: 'mapTruck',
       style: 'mapbox://styles/mapbox/streets-v8',
       center: centerCoordinates,
-      zoom: 15
+      zoom: 13
     });
 
     mapTruck.on('load', function() {
