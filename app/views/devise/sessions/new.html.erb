@@ -1,25 +1,25 @@
 <div class="container">
   <div class="twitter-btn">
-  <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-  <%= link_to fa_icon("twitter", text:"Login with #{OmniAuth::Utils.camelize(provider)}"),
-    omniauth_authorize_path(resource_name, provider), class: "btn btn-primary" %><br/>
-  <% end -%>
-  <% end -%>
-</div>
-<h4><strong>Alternative Login</strong></h4>
-  <form>
+    <%- if devise_mapping.omniauthable? %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to fa_icon("twitter", text:"Login with #{OmniAuth::Utils.camelize(provider)}"),
+        omniauth_authorize_path(resource_name, provider), class: "btn btn-block btn-primary" %><br/>
+    <% end -%>
+    <% end -%>
+  </div>
+  <h2>Login with Password</h2>
+  <div class="well">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
       <div class="field">
         <%= f.label :email %><br/>
-        <%= f.email_field :email, autofocus: true %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
       <div class="field">
         <%= f.label :password %><br/>
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
       </div>
     </div>
     <% if devise_mapping.rememberable? -%>
@@ -33,14 +33,14 @@
     <div id="login-btns" class="button-group">
       <%= f.submit "Log in", class:"btn btn-success" %>
       <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-      <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary" %><br/>
+        <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary" %><br/>
       <% end -%>
     </div>
     <% end %>
-  </form>
 
-<div>
-  <%= render "devise/shared/links" %>
-</div>
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+    <% end -%>
 
+  </div>
 </div>
