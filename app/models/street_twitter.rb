@@ -13,13 +13,13 @@ class StreetTwitter
   end
 
   def home_tweets
-    Rails.cache.fetch("twitter_truck_index", expires_in: 30.minutes.from_now) do
+    Rails.cache.fetch("twitter_truck_index", expires_in: 60 * 60) do
       client.home_timeline[0..19]
     end
   end
 
   def tweets_for_handle(handle)
-    Rails.cache.fetch("twitter_#{handle}", expires_in: 30.minutes.from_now) do
+    Rails.cache.fetch("twitter_#{handle}", expires_in: 60 * 60) do
       client.user_timeline(handle).map { |tweet| TweetDecorator.new(tweet) }
     end
   end
