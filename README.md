@@ -18,6 +18,10 @@ and Pull Requests are welcome.
 `"redis", "~> 2.2"`
 `"pg", "~> 0.18.4"`
 
+#Run
+After pulling down the application run `bundle install`, `rake db:create`,
+and migrate the database using `rake db:migrate`.
+
 ##Tests
 All tests for this application are written in `Rspec` and can be run using
 the `rspec` command from the project directory.
