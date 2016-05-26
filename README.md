@@ -1,4 +1,4 @@
-##StreetFleet
+#StreetFleet
 
 [![Build Status](https://travis-ci.org/westmd23/street_fleet.svg?branch=master)](https://travis-ci.org/westmd23/street_fleet)
 [![Code Climate](https://codeclimate.com/github/westmd23/street_fleet/badges/gpa.svg)](https://codeclimate.com/github/westmd23/street_fleet)
@@ -18,7 +18,7 @@ and Pull Requests are welcome.
 `"redis", "~> 2.2"`
 `"pg", "~> 0.18.4"`
 
-#Run
+##Run
 After pulling down the application run `bundle install`, `rake db:create`,
 and migrate the database using `rake db:migrate`.
 
