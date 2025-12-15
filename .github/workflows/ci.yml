@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+env:
+  RAILS_ENV: test
+  POSTGRES_HOST: localhost
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_DB: travis_ci_test
+  REDIS_URL: redis://localhost:6379/0
+  BUNDLE_PATH: vendor/bundle
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    # Service containers for PostgreSQL and Redis
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: travis_ci_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:6
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    container:
+      image: ruby:2.3.0
+      options: --user root
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Install system dependencies
+        run: |
+          echo 'Installing system dependencies...'
+          apt-get update -qq
+          apt-get install -y -qq postgresql-client nodejs
+
+      - name: Cache Ruby gems
+        uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4.0.0
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Install Ruby dependencies
+        run: |
+          echo 'Installing Ruby dependencies...'
+          gem install bundler --no-document
+          bundle install --jobs=4 --retry=3 --path="${BUNDLE_PATH}"
+
+      - name: Configure database
+        run: |
+          echo 'Configuring database...'
+          cp config/database.yml.travis config/database.yml
+
+      - name: Setup test database
+        run: |
+          echo 'Setting up test database...'
+          bundle exec rake db:create || true
+          bundle exec rake db:migrate
+
+      - name: Run RSpec tests
+        run: |
+          echo 'Running RSpec tests...'
+          mkdir -p test-results
+          bundle exec rspec \
+            --format documentation \
+            --format RspecJunitFormatter \
+            --out test-results/rspec.xml
+        continue-on-error: false
+
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@ca89ad036b5fcd524c1017287fb01b5139908408 # v2.11.0
+        if: always()
+        with:
+          files: |
+            test-results/*.xml
+          check_name: Test Results
+
+      - name: Build status
+        if: success()
+        run: echo 'Build succeeded!'
+
+      - name: Build failure
+        if: failure()
+        run: echo 'Build failed!'
