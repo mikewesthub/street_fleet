@@ -89,19 +89,8 @@ jobs:
         run: |
           echo 'Running RSpec tests...'
           mkdir -p test-results
-          bundle exec rspec \
-            --format documentation \
-            --format RspecJunitFormatter \
-            --out test-results/rspec.xml
+          bundle exec rspec --format documentation
         continue-on-error: false
-
-      - name: Publish test results
-        uses: EnricoMi/publish-unit-test-result-action@ca89ad036b5fcd524c1017287fb01b5139908408 # v2.11.0
-        if: always()
-        with:
-          files: |
-            test-results/*.xml
-          check_name: Test Results
 
       - name: Build status
         if: success()
