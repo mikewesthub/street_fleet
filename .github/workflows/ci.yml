@@ -88,7 +88,6 @@ jobs:
       - name: Run RSpec tests
         run: |
           echo 'Running RSpec tests...'
-          mkdir -p test-results
           bundle exec rspec --format documentation
         continue-on-error: false
 
