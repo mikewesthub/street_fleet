@@ -21,7 +21,7 @@ $(document).ready(function() {
   if ($(".map-container").length > 0) {
 
     mapboxgl.accessToken = 'pk.eyJ1Ijoid2VzdG1kMjMiLCJhIjoiY2lvMHNhZ3gyMTl6aXRxa2pnbDM0ajBzOCJ9.f-skllhdyAEgwGO_UZhk8Q';
-    var map = new mapboxgl.Map({
+    const map = new mapboxgl.Map({
       container: 'mapIndex',
       style: 'mapbox://styles/mapbox/streets-v8',
       center: [-77.06274032592773,
@@ -50,13 +50,13 @@ $(document).ready(function() {
       });
     });
 
-    var popup = new mapboxgl.Popup({
+    const popup = new mapboxgl.Popup({
         closeButton: false,
         closeOnClick: false
       });
 
     map.on("mousemove", function (e) {
-       var features = map.queryRenderedFeatures(e.point, { layers: ["markers"] });
+       let features = map.queryRenderedFeatures(e.point, { layers: ["markers"] });
 
        map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 
@@ -65,7 +65,7 @@ $(document).ready(function() {
             return;
        }
 
-       var feature = features[0];
+       const feature = features[0];
 
        popup.setLngLat(feature.geometry.coordinates)
          .setHTML("<p class='map-activity-title'><a href='"+feature.properties.url+"'>"+ feature.properties.truck_title + "</a></p>" + feature.properties.address)
@@ -74,7 +74,7 @@ $(document).ready(function() {
    });
 
     navigator.geolocation.getCurrentPosition(function(position) {
-      var current_location = [position.coords.longitude, position.coords.latitude]
+      const current_location = [position.coords.longitude, position.coords.latitude]
       map.panTo(current_location);
     });
 
